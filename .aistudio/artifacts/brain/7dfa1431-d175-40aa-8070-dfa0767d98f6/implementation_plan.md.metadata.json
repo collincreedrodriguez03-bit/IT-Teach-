@@ -1,0 +1,6 @@
+{
+  "summary": "Detailed implementation plan for Network Teach architecture overhaul and revised patch requirements: Tabbed Hamburger Navigation Drawer (KPI Metrics & Career Roadmap), dedicated sub-tab and fullscreen overlay for 70/30 Hybrid Flashcards, Formatted Markdown dossier export for Recruiter Ready View, inline pencil editing across all modules, Activity Log tracker with adaptive calibration, strictly offline Room SQLite persistence, and progressive capped streak multiplier.",
+  "updatedAt": "2026-10-16T08:14:06.224600330Z",
+  "requestFeedback": true,
+  "userFacing": true
+}

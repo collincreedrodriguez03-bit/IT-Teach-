@@ -1,0 +1,130 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with gamified progression, XP, badges, streak, and security lockout",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "description": "Email address" },
+        "xp": { "type": "integer", "description": "Total experience points" },
+        "level": { "type": "integer", "description": "Current rank level" },
+        "streakCount": { "type": "integer", "description": "Daily learning streak count" },
+        "lastActiveDate": { "type": "string", "description": "Last active date YYYY-MM-DD" },
+        "badges": { "type": "array", "description": "Unlocked badge IDs" },
+        "pinHash": { "type": "string", "description": "4-digit security PIN hash" },
+        "failedPinAttempts": { "type": "integer", "description": "Failed PIN entry count" },
+        "lockoutUntil": { "type": "integer", "description": "Epoch timestamp until which PIN entry is locked" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp of creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp of update" }
+      },
+      "required": ["userId", "displayName", "xp", "level", "streakCount", "createdAt"]
+    },
+    "DictionaryTerm": {
+      "title": "DictionaryTerm",
+      "description": "IT & Networking dictionary command and technical definition",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Term document ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "term": { "type": "string", "description": "Command or technical term" },
+        "command": { "type": "string", "description": "Command syntax or terminal snippet" },
+        "description": { "type": "string", "description": "User notes and explanation" },
+        "category": { "type": "string", "description": "Technical category (Networking, Linux, Security, etc.)" },
+        "difficulty": { "type": "string", "description": "Difficulty level (Beginner, Intermediate, Advanced)" },
+        "isMastered": { "type": "boolean", "description": "Mastery toggle flag" },
+        "isAiGenerated": { "type": "boolean", "description": "Flag for elite 5% AI unlockable definitions" },
+        "aiExplanation": { "type": "string", "description": "Optional AI refined explanation or syntax warning" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp of creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp of update" }
+      },
+      "required": ["userId", "term", "category", "difficulty", "isMastered", "isAiGenerated", "createdAt"]
+    },
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Personal lab log, troubleshooting note, and technical documentation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Journal entry document ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Lab or troubleshooting title" },
+        "notes": { "type": "string", "description": "Detailed notes, steps, and observations" },
+        "solution": { "type": "string", "description": "Working solution or terminal verification" },
+        "tags": { "type": "array", "description": "Comma-separated list of tags" },
+        "category": { "type": "string", "description": "Category (Linux, Networking, Security, Cloud/DevOps, Troubleshooting)" },
+        "isVerified": { "type": "boolean", "description": "Verified working solution flag" },
+        "isMastered": { "type": "boolean", "description": "Mastery state flag" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp of creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp of update" }
+      },
+      "required": ["userId", "title", "notes", "category", "isVerified", "createdAt"]
+    },
+    "PortfolioProject": {
+      "title": "PortfolioProject",
+      "description": "Employer-ready case study showcasing verified IT labs and architectures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Case study document ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Project title" },
+        "executiveSummary": { "type": "string", "description": "Executive summary for hiring managers" },
+        "problemBusinessNeed": { "type": "string", "description": "Problem or business need addressed" },
+        "toolsTechnologies": { "type": "array", "description": "Tools and technologies utilized" },
+        "architectureSteps": { "type": "string", "description": "Architecture and steps taken" },
+        "resultsMetrics": { "type": "string", "description": "Results and ROI metrics (uptime, latency)" },
+        "verifiedEvidence": { "type": "string", "description": "Verified logs and command outputs" },
+        "lessonsLearned": { "type": "string", "description": "Engineering takeaways and lessons learned" },
+        "isVerified": { "type": "boolean", "description": "Verified status" },
+        "isMastered": { "type": "boolean", "description": "Mastered status" },
+        "linkedJournalIds": { "type": "array", "description": "Linked journal entry IDs" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp of creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp of update" }
+      },
+      "required": ["userId", "title", "executiveSummary", "problemBusinessNeed", "architectureSteps", "isVerified", "createdAt"]
+    },
+    "Quest": {
+      "title": "Quest",
+      "description": "Gamified certification roadmap quest, daily challenge, or hands-on side quest",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Quest document ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Quest title" },
+        "description": { "type": "string", "description": "Quest requirements and learning target" },
+        "questType": { "type": "string", "description": "MAIN (Certifications), DAILY (Retention/Quiz), SIDE (Outside learning)" },
+        "category": { "type": "string", "description": "Domain (CCNA, A_PLUS, SECURITY_PLUS, PYTHON, NETWORKING, LINUX)" },
+        "xpReward": { "type": "integer", "description": "XP earned upon completion" },
+        "status": { "type": "string", "description": "ACTIVE, COMPLETED, VERIFIED" },
+        "outsideLearningRequirement": { "type": "string", "description": "Outside hands-on task required for side quests" },
+        "isVerified": { "type": "boolean", "description": "Verified completion status" },
+        "isMastered": { "type": "boolean", "description": "Mastered milestone status" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp of creation" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp of update" }
+      },
+      "required": ["userId", "title", "questType", "category", "xpReward", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile with experience points, streak, and preferences"
+    },
+    "/users/{userId}/dictionary/{termId}": {
+      "schema": "DictionaryTerm",
+      "description": "User technical dictionary terms and commands"
+    },
+    "/users/{userId}/journal/{entryId}": {
+      "schema": "JournalEntry",
+      "description": "User technical lab notes and troubleshooting solutions"
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "PortfolioProject",
+      "description": "Employer-ready case studies and portfolio projects"
+    },
+    "/users/{userId}/quests/{questId}": {
+      "schema": "Quest",
+      "description": "Gamification quests, certification paths, and daily challenges"
+    }
+  }
+}
